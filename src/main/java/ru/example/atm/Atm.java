@@ -1,5 +1,8 @@
 package ru.example.atm;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.example.card.Card;
 import ru.example.client.Client;
 
@@ -8,10 +11,12 @@ import java.math.MathContext;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-
+@Getter
+@Setter
 public class Atm {
     final Random random = new Random();
     private String atmNumber;
+
 
     public Atm(String atmNumber) {
         this.atmNumber = atmNumber;
@@ -33,16 +38,16 @@ public class Atm {
         return card1.isBlocked();
     }
 
-    public int returnCard() {
-        return 1;
+    public String returnCard() {
+        return "Заберите карту. Сеанс обслуживания завершен.";
     }
 
     public int readCard() {
         return 1;
     }
 
-    public void getMainMenu() {
-        System.out.print("Выберите действие: 1 - получить баланс, любое другое число - забрать карту: ");
+    public String getMainMenu() {
+        return "Выберите действие: 1 - получить баланс, любое другое число - забрать карту: ";
     }
 
 }

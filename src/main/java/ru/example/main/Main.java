@@ -4,6 +4,7 @@ import ru.example.atm.Atm;
 import ru.example.card.Card;
 import ru.example.client.Client;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,7 +17,7 @@ public class Main {
         double balance;
         GregorianCalendar cardExpiryDate = new GregorianCalendar(2022, Calendar.JANUARY, 1);
         int userAction;
-        int userPin;
+        int userPin = 0;
         System.out.println("Пожалуйста, вставьте карту");
         Atm atm1 = new Atm("atm 54747876896789");
         Client client1 = new Client();
@@ -36,7 +37,14 @@ public class Main {
 
         Scanner pin = new Scanner(System.in);
         System.out.print("Введите пин-код: ");
-        userPin = pin.nextInt();
+        try {
+            userPin = pin.nextInt();
+        } catch (Exception e) {
+            System.out.println("Введено неверное число");
+            System.exit(4);
+        }
+
+
         client1.inputPinCode(userPin);
 
         if (!atm1.checkIsPinCorrect(card1, userPin)) {
@@ -45,19 +53,24 @@ public class Main {
             System.exit(3);
         }
 
-        atm1.getMainMenu();
+        System.out.print(atm1.getMainMenu());
         do {
-            userAction = pin.nextInt();
+            //  userAction = pin.nextInt();
+            try {
+                userAction = pin.nextInt();
+            } catch (Exception e) {
+                break;
+            }
             client1.chooseAction(userAction);
             if (userAction == 1) {
+                System.out.println("Выберите валюту: RUR, USD, EUR");
                 balance = atm1.getBalance(card1.getCardNumber(), "RUR");
                 System.out.println("Баланс: " + String.format("%.2f", balance) + " " + "RUR");
-                atm1.getMainMenu();
+                System.out.print(atm1.getMainMenu());
             }
         }
         while (userAction == 1);
-        atm1.returnCard();
-        System.out.println("Заберите карту. Сеанс обслуживания завершен.");
+        System.out.println(atm1.returnCard());
         pin.close();
     }
 }

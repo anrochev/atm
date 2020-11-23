@@ -1,7 +1,10 @@
 package ru.example.client;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.example.card.Card;
-
+@Getter
+@Setter
 public class Client {
     Card clientCard;
 
