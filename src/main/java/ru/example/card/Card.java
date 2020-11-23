@@ -16,28 +16,4 @@ public class Card {
     private String owner;
     private int pinCode;
     private boolean isBlocked;
-
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public GregorianCalendar getExpiryDate() {
-        return expiryDate;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public int getPinCode() {
-        return pinCode;
-    }
-
-    public boolean isBlocked() {
-        return isBlocked;
-    }
-
-    public void setBlocked(boolean blocked) {
-        isBlocked = blocked;
-    }
 }

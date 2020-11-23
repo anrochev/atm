@@ -20,11 +20,4 @@ public class Client {
         return card.getCardNumber() != null;
     }
 
-    public Card getClientCard() {
-        return clientCard;
-    }
-
-    public void setClientCard(Card clientCard) {
-        this.clientCard = clientCard;
-    }
 }
