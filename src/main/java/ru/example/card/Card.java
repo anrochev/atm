@@ -4,15 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @AllArgsConstructor
 public class Card {
     private String cardNumber;
-    private GregorianCalendar expiryDate;
+    private LocalDate expiryDate;
     private String owner;
     private int pinCode;
     private boolean isBlocked;

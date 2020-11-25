@@ -1,20 +1,16 @@
 package ru.example.atm;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import ru.example.card.Card;
-import ru.example.client.Client;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 import java.util.Random;
 
 @Getter
 @Setter
 public class Atm {
-    final Random random = new Random();
+    private final Random random = new Random();
     private String atmNumber;
 
 
@@ -27,7 +23,7 @@ public class Atm {
     }
 
     public boolean checkIsExpiry(Card card1) {
-        return card1.getExpiryDate().before(new GregorianCalendar());
+        return card1.getExpiryDate().isBefore(LocalDate.now());
     }
 
     public boolean checkIsPinCorrect(Card card1, int userPin) {

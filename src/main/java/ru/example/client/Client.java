@@ -6,7 +6,7 @@ import ru.example.card.Card;
 @Getter
 @Setter
 public class Client {
-    Card clientCard;
+    private Card clientCard;
 
     public int inputPinCode(int pinCode) {
         return pinCode;

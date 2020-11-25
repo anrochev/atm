@@ -6,6 +6,7 @@ import ru.example.client.Client;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -15,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         double balance;
-        GregorianCalendar cardExpiryDate = new GregorianCalendar(2022, Calendar.JANUARY, 1);
+        LocalDate cardExpiryDate = LocalDate.of(2022, 1, 1);
         int userAction;
         int userPin = 0;
         System.out.println("Пожалуйста, вставьте карту");
