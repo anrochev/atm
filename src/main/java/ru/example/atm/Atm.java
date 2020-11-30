@@ -3,6 +3,7 @@ package ru.example.atm;
 import lombok.Getter;
 import lombok.Setter;
 import ru.example.card.Card;
+import ru.example.host.Host;
 
 import java.time.LocalDate;
 import java.util.Random;
@@ -19,7 +20,8 @@ public class Atm {
     }
 
     public double getBalance(String cardNumber, String currency) {
-        return (random.nextDouble() + random.nextInt(1000000));
+        Host host1 = new Host();
+           return (host1.getBalance(cardNumber, currency));
     }
 
     public boolean checkIsExpiry(Card card1) {
