@@ -7,6 +7,7 @@ import ru.example.host.Host;
 
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,9 +20,9 @@ public class Atm {
         this.atmNumber = atmNumber;
     }
 
-    public double getBalance(String cardNumber, String currency) {
+    public double getBalance(String cardNumber, String currency, UUID rqUID) {
         Host host1 = new Host();
-           return (host1.getBalance(cardNumber, currency));
+           return (host1.getBalance(cardNumber, currency, rqUID));
     }
 
     public boolean checkIsExpiry(Card card1) {

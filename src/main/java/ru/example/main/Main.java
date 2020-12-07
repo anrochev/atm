@@ -2,15 +2,13 @@ package ru.example.main;
 
 import ru.example.atm.Atm;
 import ru.example.card.Card;
+import ru.example.client.Account;
 import ru.example.client.Client;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -19,12 +17,24 @@ public class Main {
         LocalDate cardExpiryDate = LocalDate.of(2022, 1, 1);
         int userAction;
         int userPin = 0;
+
+
+        UUID rqUid1 = UUID.randomUUID();
         System.out.println("Пожалуйста, вставьте карту");
         Atm atm1 = new Atm("atm 54747876896789");
         Client client1 = new Client();
         Card card1 = new Card("3476380078654534", cardExpiryDate, "Иванов Иван Иванович", 3333, false);
         client1.setClientCard(card1);
         client1.insertCard(card1);
+
+        Account<String> savingAccount = new Account<>();
+        List<String> list = Arrays.asList("12345678901234567890","12345678911234567891");
+        savingAccount.test(list);
+        Account<Integer> defaultAccount = new Account<>();
+        List<Integer> listInt = Arrays.asList(1234,4321);
+        defaultAccount.test(listInt);
+        client1.setAccounts(savingAccount);
+
         atm1.readCard();
 
         if (atm1.checkIsExpiry(card1)) {
@@ -65,7 +75,7 @@ public class Main {
             client1.chooseAction(userAction);
             if (userAction == 1) {
                 System.out.println("Выберите валюту: RUR, USD, EUR");
-                balance = atm1.getBalance(card1.getCardNumber(), "RUR");
+                balance = atm1.getBalance(card1.getCardNumber(), "RUR", rqUid1);
                 System.out.println("Баланс: " + String.format("%.2f", balance) + " " + "RUR");
                 System.out.print(atm1.getMainMenu());
             }
