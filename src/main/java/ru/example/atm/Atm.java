@@ -29,8 +29,11 @@ public class Atm {
         return card1.getExpiryDate().isBefore(LocalDate.now());
     }
 
-    public boolean checkIsPinCorrect(Card card1, int userPin) {
+   /* public boolean checkIsPinCorrect(Card card1, int userPin) {
         return card1.getPinCode() == userPin;
+    } */
+    public boolean checkIsPinCorrect(CheckPin checkPin1, int CorrectPin, int PinForCheck) {
+        return checkPin1.checkIsPinCorrect(CorrectPin,PinForCheck);
     }
 
     public boolean checkIsBlocked(Card card1) {

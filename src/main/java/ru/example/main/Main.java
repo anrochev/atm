@@ -1,6 +1,7 @@
 package ru.example.main;
 
 import ru.example.atm.Atm;
+import ru.example.atm.CheckPin;
 import ru.example.card.Card;
 import ru.example.client.Account;
 import ru.example.client.Client;
@@ -53,8 +54,8 @@ public class Main {
 
         client1.inputPinCode(userPin);
 
-        if (!atm1.checkIsPinCorrect(card1, userPin)) {
-            System.out.println("Некорректный пин-код");
+        if (!atm1.checkIsPinCorrect((CorrectPin, PinForCheck) -> (CorrectPin == PinForCheck),card1.getPinCode(),userPin)) {
+        System.out.println("Некорректный пин-код");
             pin.close();
             System.exit(3);
         }
