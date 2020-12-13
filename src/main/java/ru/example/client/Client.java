@@ -1,17 +1,18 @@
 package ru.example.client;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import ru.example.card.Card;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+@AllArgsConstructor
 @Getter
 @Setter
-public class Client {
+public class Client<TAccount extends  Account> {
     private Card clientCard;
-    private Account accounts;
+    private TAccount account;
 
     public int inputPinCode(int pinCode) {
         return pinCode;
