@@ -1,20 +1,18 @@
 package ru.example.atm;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import ru.example.card.Card;
-import ru.example.client.Client;
+import ru.example.host.Host;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 import java.util.Random;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class Atm {
-    final Random random = new Random();
+    private final Random random = new Random();
     private String atmNumber;
 
 
@@ -22,16 +20,20 @@ public class Atm {
         this.atmNumber = atmNumber;
     }
 
-    public double getBalance(String cardNumber, String currency) {
-        return (random.nextDouble() + random.nextInt(1000000));
+    public double getBalance(String cardNumber, String currency, UUID rqUID) {
+        Host host1 = new Host();
+           return (host1.getBalance(cardNumber, currency, rqUID));
     }
 
     public boolean checkIsExpiry(Card card1) {
-        return card1.getExpiryDate().before(new GregorianCalendar());
+        return card1.getExpiryDate().isBefore(LocalDate.now());
     }
 
-    public boolean checkIsPinCorrect(Card card1, int userPin) {
+   /* public boolean checkIsPinCorrect(Card card1, int userPin) {
         return card1.getPinCode() == userPin;
+    } */
+    public boolean checkIsPinCorrect(CheckPin checkPin1, int CorrectPin, int PinForCheck) {
+        return checkPin1.checkIsPinCorrect(CorrectPin,PinForCheck);
     }
 
     public boolean checkIsBlocked(Card card1) {
