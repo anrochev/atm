@@ -1,25 +1,23 @@
 package ru.example.main;
 
 import ru.example.atm.Atm;
-import ru.example.atm.CheckPin;
 import ru.example.card.Card;
-import ru.example.client.Account;
 import ru.example.client.Client;
 import ru.example.client.SavingAccount;
 
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.time.Month;
+import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
 
     public static void main(String[] args) {
         double balance;
-        LocalDate cardExpiryDate = LocalDate.of(2022, 1, 1);
+        LocalDate cardExpiryDate = LocalDate.of(2022, Month.JANUARY, 1);
         int userAction;
         int userPin = 0;
-        SavingAccount savingAccount1 = new SavingAccount("12345678900987654321",LocalDate.of(2022, 1, 1));
+        SavingAccount savingAccount1 = new SavingAccount("12345678900987654321",LocalDate.of(2022, Month.JANUARY, 1));
 
         UUID rqUid1 = UUID.randomUUID();
         System.out.println("Пожалуйста, вставьте карту");
