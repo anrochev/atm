@@ -1,5 +1,8 @@
 package ru.example.main;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import ru.example.atm.Atm;
 import ru.example.card.Card;
 import ru.example.client.Client;
@@ -9,6 +12,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Scanner;
 import java.util.UUID;
+@ComponentScan(basePackages = "ru.example.card")
 
 public class Main {
 
@@ -17,13 +21,16 @@ public class Main {
         LocalDate cardExpiryDate = LocalDate.of(2022, Month.JANUARY, 1);
         int userAction;
         int userPin = 0;
+        ApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
         SavingAccount savingAccount1 = new SavingAccount("12345678900987654321",LocalDate.of(2022, Month.JANUARY, 1));
 
         UUID rqUid1 = UUID.randomUUID();
         System.out.println("Пожалуйста, вставьте карту");
         Atm atm1 = new Atm("atm 54747876896789");
 
-        Card card1 = new Card("3476380078654534", cardExpiryDate, "Иванов Иван Иванович", 3333, false);
+        //Card card1 = new Card("3476380078654534", cardExpiryDate, "Иванов Иван Иванович", 3333, false);
+        Card card1 =  context.getBean("card", Card.class);
+
         Client<SavingAccount> client1 = new Client<>(card1, savingAccount1);
         client1.setClientCard(card1);
         client1.insertCard(card1);

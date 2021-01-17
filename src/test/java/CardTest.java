@@ -1,14 +1,15 @@
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.example.card.Card;
+import ru.example.main.Main;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class CardTest {
     private static Validator validator;
-
+    ApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
     @BeforeAll
     public static void setUpValidator() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -29,7 +30,8 @@ public class CardTest {
     @Test
     void getOwner() {
 //      Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 10000, false);
-        Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), null, 10000, false);
+//        Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), null, 10000, false);
+        Card card =  context.getBean("card", Card.class);
 
         Set<ConstraintViolation<Card>> constraintViolations =
                 validator.validate( card );
@@ -40,8 +42,8 @@ public class CardTest {
     @Test
     void getPin() {
   //    Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 3333, false);
-        Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 10000, false);
-
+  //      Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 10000, false);
+        Card card =  context.getBean("card", Card.class);
         Set<ConstraintViolation<Card>> constraintViolations =
                 validator.validate( card );
 
