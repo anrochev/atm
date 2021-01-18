@@ -1,9 +1,10 @@
 package ru.example.atm;
 
+import ru.example.card.Card;
+import ru.example.common.Currency;
+import ru.example.host.Host;
 import lombok.Getter;
 import lombok.Setter;
-import ru.example.card.Card;
-import ru.example.host.Host;
 
 import java.time.LocalDate;
 import java.util.Random;
@@ -20,7 +21,7 @@ public class Atm {
         this.atmNumber = atmNumber;
     }
 
-    public double getBalance(String cardNumber, String currency, UUID rqUID) {
+    public double getBalance(String cardNumber, Currency currency, UUID rqUID) {
         Host host1 = new Host();
            return (host1.getBalance(cardNumber, currency, rqUID));
     }

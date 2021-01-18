@@ -6,7 +6,12 @@
 
     <groupId>ru.example</groupId>
     <artifactId>atm-2020102012</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>common</module>
+        <module>main_code</module>
+    </modules>
 
     <properties>
         <spring-version>5.2.3.RELEASE</spring-version>

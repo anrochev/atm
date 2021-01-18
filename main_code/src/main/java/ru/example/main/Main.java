@@ -7,6 +7,7 @@ import ru.example.atm.Atm;
 import ru.example.card.Card;
 import ru.example.client.Client;
 import ru.example.client.SavingAccount;
+import ru.example.common.Currency;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -76,7 +77,7 @@ public class Main {
             client1.chooseAction(userAction);
             if (userAction == 1) {
                 System.out.println("Выберите валюту: RUR, USD, EUR");
-                balance = atm1.getBalance(card1.getCardNumber(), "RUR", rqUid1);
+                balance = atm1.getBalance(card1.getCardNumber(), Currency.RUR, rqUid1);
                 System.out.println("Баланс: " + String.format("%.2f", balance) + " " + "RUR");
                 System.out.print(atm1.getMainMenu());
             }
