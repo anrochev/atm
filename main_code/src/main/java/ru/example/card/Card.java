@@ -13,6 +13,7 @@ import java.time.Month;
 @Getter
 @Setter
 @RequiredArgsConstructor
+//@AllArgsConstructor
 @Component("card")
 public class Card {
     @NotNull

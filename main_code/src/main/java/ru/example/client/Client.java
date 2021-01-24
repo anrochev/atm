@@ -1,12 +1,10 @@
 package ru.example.client;
 
+import ru.example.card.Card;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import ru.example.card.Card;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 @AllArgsConstructor
 @Getter
 @Setter

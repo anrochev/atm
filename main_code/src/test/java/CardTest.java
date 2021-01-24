@@ -1,4 +1,5 @@
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -11,8 +12,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 public class CardTest {
@@ -36,20 +35,20 @@ public class CardTest {
         Set<ConstraintViolation<Card>> constraintViolations =
                 validator.validate( card );
 
-        assertEquals( "must not be not null", constraintViolations.iterator().next().getMessage());
+        Assertions.assertEquals( "must not be not null", constraintViolations.iterator().next().getMessage());
     }
 
     @Test
     void getPin() {
-  //    Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 3333, false);
-  //      Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 10000, false);
+        //    Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 3333, false);
+        //      Card card = new Card("3476380078654534", LocalDate.of(2022, Month.JANUARY, 1), "Иванов Иван Иванович", 10000, false);
         Card card =  context.getBean("card", Card.class);
         Set<ConstraintViolation<Card>> constraintViolations =
                 validator.validate( card );
 
-        assertEquals( 1, constraintViolations.size() );
+        Assertions.assertEquals( 1, constraintViolations.size() );
 
-        assertEquals(
+        Assertions.assertEquals(
                 "size must be between 0 and 9999",
                 constraintViolations.iterator().next().getMessage()
         );
