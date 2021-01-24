@@ -1,9 +1,8 @@
 package ru.example.card;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -12,9 +11,9 @@ import java.time.Month;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
-//@AllArgsConstructor
-@Component("card")
+//@RequiredArgsConstructor
+@AllArgsConstructor
+//@Component("card")
 public class Card {
     @NotNull
 
@@ -26,4 +25,6 @@ public class Card {
     //@Size(min = 0, max = 9999)
     private int pinCode = 3333;
     private boolean isBlocked = false;
+    private long ClientId = 1;
+    private long AccountId = 1;
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.example.card.Card;
-import ru.example.main.Main;
+import ru.example.Main;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
