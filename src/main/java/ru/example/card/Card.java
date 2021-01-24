@@ -1,24 +1,28 @@
 package ru.example.card;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.Month;
+
 
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Component("card")
 public class Card {
     @NotNull
-    private String cardNumber;
 
-    private LocalDate expiryDate;
+    private String cardNumber = "3476380078654534";
+
+    private LocalDate expiryDate = LocalDate.of(2022, Month.JANUARY, 1);
     @NotNull
-    private String owner;
-    @Size(min = 0, max = 9999)
-    private int pinCode;
-    private boolean isBlocked;
+    private String owner = "Иванов Иван Иванович";
+    //@Size(min = 0, max = 9999)
+    private int pinCode = 3333;
+    private boolean isBlocked = false;
 }
