@@ -14,10 +14,10 @@ import java.util.UUID;
 @Setter
 public class Atm {
     private final Random random = new Random();
-    private String atmNumber;
+    private long atmNumber;
 
 
-    public Atm(String atmNumber) {
+    public Atm(long atmNumber) {
         this.atmNumber = atmNumber;
     }
 

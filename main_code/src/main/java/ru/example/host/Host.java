@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.log4j.Logger;
 import ru.example.common.Currency;
+import ru.example.exception.ATMInternalErrorException;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -24,7 +25,8 @@ public class Host {
     public double getBalance(String cardNumber, Currency currency, UUID rqUid) {
         if (uuidHashSet.contains(rqUid)) {
             log.info("Дубликат запроса "+rqUid.toString());
-            return -1;
+            throw new ATMInternalErrorException("ATM internal Error"+" duplicate request "+rqUid.toString());
+            //return -1;
         }
         uuidHashSet.add(rqUid);
         log.info("Запрос баланса по карте "+cardNumber+", валюта:"+currency.toString()+", rqUid="+rqUid.toString());
